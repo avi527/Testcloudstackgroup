@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>profile</title>
+	    {% load static %}  
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+</head>
+<body>
+<div class="container">
+	<h2 class="text-center" style="color: #007bff,font-style: italic;">Welcome {{session_id}}</h2>
+	
+	<div class="card">
+	    <div class="card-body">
+	        <div class="row">
+	        	{% for i in retriveRecord %}
+        	    <div class="col-md-2">
+        	        <img src="http://127.0.0.1:8000/cloudstackApp/pic_folder/{{i.Profile_Image}}" class="img img-rounded img-fluid"/>
+        	    </div>
+        	    <div class="col-md-10">
+        	    	<a href="{% url 'logout' %}" class="float-right btn text-white btn-danger">Logout</a>
+        	        <p>
+        	            <a class="float-left" href="#"><strong>Name: {{i.First_Name}}  {{i.Last_Name}}</strong></a><br>
+        	            <p>First Name : {{i.First_Name}}</p>
+        	            <p>Last Name : {{i.Last_Name}}</p>
+        	            <p>Email : {{i.Email}}</p>
+        	 
+                    	       </p>
+                    	    </div>
+        	    </div>
+        	    {% endfor %}
+	        </div>
+	    </div>
+	</div>
+</body>
+</html>
